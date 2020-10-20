@@ -1,0 +1,104 @@
+<p>login works!</p>
+<h1 class="bg-secondary">Welcome to {{title}}</h1>
+<small>data binding concept used</small>
+
+<small>used selector of tasks component as an element or tag</small>
+<br>
+
+
+<div *ngIf=showMsg [ngStyle]={color:colorName}> show this message from If true statement</div>
+<small>click,mouseup,mouse down,keyup etc are the events assosciated with the components</small>
+<hr>
+<h2 class="bg-primary">structural Directives</h2>
+for structural directives we use (*) asterick symbol
+<p>1.ngFor--used for iterative purpose <br>
+  2. ngIF--we can do conditional operations<br>
+  3. ngSwitch--used to evaluate expressions i.e,true or false accordingly output prints
+</p>
+<h6>[ngStyle],[ngClass] are the the Attribute Directives</h6>
+
+
+<div class="bg-warning">
+<h5 >If Statement</h5>
+<div *ngIf=viewmsg>open the message if viewmsg = true</div>
+</div>
+<br>
+<hr>
+<div class="bg-danger">
+  <h5 >ngIf along with Else Statement</h5>
+  <div *ngIf=showvalue ; else shownovalue>show the value i.e; if message </div>
+  <ng-template #shownovalue>Don't show the value i.e; else message</ng-template>
+  </div>
+  <br>
+  <div class="bg-secondary">
+    <h5 >ngIf  with Then and Else Statement</h5>
+    <div *ngIf=Ifblock ; then thenblock; else elseblock>Printing If Block</div>
+    <ng-template #thenblock>printing THEN Block</ng-template>
+    <ng-template #elseblock>Printing ELSE blocke</ng-template>
+
+  </div>
+  <hr>
+  <h2>NgSwitch Example</h2>
+   <div [ngSwitch]="switchvalue">
+    <div *ngSwitchCase="1">output 1</div>
+    <div *ngSwitchCase="2">output 2</div>
+    <div *ngSwitchCase="'three'">output Three</div>
+    <div *ngSwitchDefault>Default output</div>
+  </div>
+
+  <hr>
+
+<h2>NgFor Example</h2>
+<table class="table">
+  <tr>
+    <th>user Id</th>
+    <th>Name</th>
+    <th>Index</th>
+    <th>First</th>
+    <th>Last</th>
+    <th>Even</th>
+    <th>Odd</th>
+  </tr>
+  <tr *ngFor="let collections of users; index as i; first as f; last as l; even as e; odd as o">    <!--collections is just like "i" and "users" is the object-->
+   <td>{{collections.userid}}</td>
+    <td>{{collections.firstname}}</td>    <!--{{}} is a databinding concept-->
+   <td>{{i}}</td>
+    <td>{{f}}</td>
+    <td>{{l}}</td>
+    <td>{{e}}</td>                         <!--show odd / even for indexes-->
+   <td>{{o}}</td>
+  </tr>
+</table>
+
+<h3>ng Style</h3>
+<div [ngStyle]="{'color': 'red'}"> Learning Angular is Fun</div>
+<!--Dynamic value-->
+<div [ngStyle]="{'color': colorval, 'background-color': 'pink'}"><h4>Add value to variable "colorval" in login.component.ts</h4></div>
+
+<br>
+
+<h3>ngClass</h3>
+<div [ngClass]=" 'one'">
+Learning ngClass .style this in .css,using the calss name as "one"
+</div><br>
+<div [ngClass]= "[clsone, clstwo]">
+  multiple class names
+  </div><br>
+  <div [ngClass]= "{'one':false, 'two':true}">
+    ngClass with expressions ture or false ,changes the color and background acc to the classes and attributes used in css and the conditions
+    </div><br>
+<h4>DATA BINDING---Interpolation (usage and examples)</h4>
+<div>{{ subtitle }}</div><br>
+<div>episode number : {{ episode }}</div><br>
+<div> user id is : {{ user.userid }} user name is: {{user.username}}</div>   <!--prints only userid value from the user data-->
+<br>
+<hr>
+<h3>Property binding---usage and examples</h3>
+<div [ngStyle]="{color:linecolor}" >
+  <h4>This is property binding,here the property is "ngStyle"</h4></div>
+  <h4 [innerHTML]='subtitle'></h4>
+  <div [ngClass]= "'c1'"> property used is ngClass i.e; setting class property via property binding and "'c1'" is ataken as string</div>
+ <br> <input [title]="'title1'">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--html property used title-->
+  <input [placeholder]="placeholderval"><br><br> <!--here "placeholderval" is taken as attribute-->
+<button  (click)='readme()'>click Me</button><br><br>
+<button  type="submit" (click)='onsubmit()'>Move to other topics</button><br>
